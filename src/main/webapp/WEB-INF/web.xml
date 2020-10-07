@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>magazine</param-value>
+    </context-param>
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>AdminOrderController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.AdminOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminOrderController</servlet-name>
+        <url-pattern>/control/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminMagazineController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.AdminMagazineController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminMagazineController</servlet-name>
+        <url-pattern>/control/magazines</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUserController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.AdminUserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUserController</servlet-name>
+        <url-pattern>/control/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditMagazineController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.EditMagazineController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditMagazineController</servlet-name>
+        <url-pattern>/control/editMagazine</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainMagazineController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.MainMagazineController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainMagazineController</servlet-name>
+        <url-pattern>/main/magazines</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.CartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/main/cart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserRegistration</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.RegistrationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserRegistration</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>com.epam.lab.magazineStore.controller.UserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/signIn</url-pattern>
+        <url-pattern>/signIn?logout=true</url-pattern>
+        <url-pattern>/changeUserData</url-pattern>
+        <url-pattern>/changeUserPassword</url-pattern>
+        <url-pattern>/topUpUserBalance</url-pattern>
+        <url-pattern>/user</url-pattern>
+        <url-pattern>/user?showData=userInfo</url-pattern>
+        <url-pattern>/user?showData=userLibrary</url-pattern>
+        <url-pattern>/user?showData=userHistory</url-pattern>
+    </servlet-mapping>
+
+
+    <!--Filters-->
+    <filter>
+        <filter-name>ConnectFilter</filter-name>
+        <filter-class>com.epam.lab.magazineStore.filter.ConnectFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ConnectFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CartAmountFilter</filter-name>
+        <filter-class>com.epam.lab.magazineStore.filter.CartAmountFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CartAmountFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AddToCartFilter</filter-name>
+        <filter-class>com.epam.lab.magazineStore.filter.AddToCartFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AddToCartFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>com.epam.lab.magazineStore.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.epam.lab.magazineStore.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/control/*</url-pattern>
+    </filter-mapping>
+
+    <!--Errors-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/main/magazines</location>
+    </error-page>
+</web-app>
